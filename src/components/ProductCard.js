@@ -14,10 +14,10 @@ export function ProductCard() {
     
   return (
     <article style={{
-        border: '1px solid border', 
-        borderRadius:'8px', 
-        padding:'16px', 
-        textAlign:'center'
+        border: "1px solid black", 
+        borderRadius:"8px", 
+        padding:"16px", 
+        textAlign:"center"
         }}
     >
       <h2>{product.title}</h2>
@@ -28,7 +28,7 @@ export function ProductCard() {
         height="128px"
       />
       <p>Specification:</p>
-      <ul>
+      <ul style = {{listStyle:'none', padding:0}}>
         <li>{product.specification[0]}</li>
         <li>{product.specification[1]}</li>
         <li>{product.specification[2]}</li>
