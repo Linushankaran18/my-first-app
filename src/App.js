@@ -51,8 +51,12 @@ function App() {
       <h2> Products which costs upto $500</h2>
       <ul>
         {products
-          .filter(product => product.price <= 500)
-          .map(({ title }) => <li key={title}>{title}</li>)
+          .filter(({ price}) => price < 500)
+          .map(({ title,price }) => (
+            <li>
+              {title} cost ${price}
+            </li>)
+          )
         }
       </ul>
     </div>
