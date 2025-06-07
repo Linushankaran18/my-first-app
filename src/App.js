@@ -1,16 +1,8 @@
 import { Fragment } from "react";
 import { ProductList } from "./components/ProductList";
 import { ProductCard } from "./components/ProductCard";
-import "./App.css";
+import styles from "./App.module.css";
 
-const styles = {
-    ListDivider: {
-      borderColor: "slategray",
-    },
-    ListTitle:{
-      margin: "8px 0"
-    },
-};
 
 
 function App() {
@@ -56,7 +48,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <ProductList> 
         {products.map((product) => (
           <ProductCard key={product.title} product={product} onPurchase={handlePurchase} />))}
