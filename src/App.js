@@ -43,14 +43,17 @@ function App() {
 
   return (
     <div className="App">
-      <ProductList>
+      <ProductList> 
         {products.map((product) => (
           <ProductCard key={product.title} product={product} onPurchase={handlePurchase} />))}
       </ProductList>
 
       <h2> Products which costs upto $500</h2>
       <ul>
-        { }
+        {products
+          .filter(product => product.price <= 500)
+          .map(({ title }) => <li key={title}>{title}</li>)
+        }
       </ul>
     </div>
   );
