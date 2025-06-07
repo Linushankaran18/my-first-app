@@ -1,3 +1,5 @@
+import "./ProductCard.css";
+
 export function ProductCard({
   product, 
   background = "slategray",
@@ -5,14 +7,7 @@ export function ProductCard({
    {
   
   return (
-    <article style={{
-        background,
-        width: "100%",
-        border: "1px solid black", 
-        borderRadius:"8px", 
-        padding:"16px", 
-        textAlign:"center"
-        }}
+    <article className="Container" style={{background}}
     >
       <h2>{product.title}</h2>
       <img
@@ -22,13 +17,31 @@ export function ProductCard({
         height={128}
       />
       <p>Specification:</p>
-      <ul style = {{listStyle:'none', padding:0}}>
+      <ul className="Specification">
         {product.specification.map((spec, index) => (
           <li key={index}>{spec}</li>
         ))}
         
       </ul>
-      <button onClick={() => onPurchase(product)}> Buy (From ${product.price})</button>
+      <Status stockCount={product.stockCount} />
+      {product.stockCount >0 && ( 
+        <button onClick={() => onPurchase(product)}> 
+          Buy (From ${product.price})
+        </button>
+      )}
     </article>
   );
+}
+
+function Status({ stockCount}) {
+  const notAvailableTemplate = (<p className="NotAvailableStatus"> Not available at the moment.</p>
+
+  )
+
+  const availableTemplate = (<p className="AvailableStatus"> 
+        {stockCount} items available.
+    </p>)
+
+  return stockCount === 0 ? notAvailableTemplate : availableTemplate;
+   
 }

@@ -1,6 +1,17 @@
+import { Fragment } from "react";
 import { ProductList } from "./components/ProductList";
 import { ProductCard } from "./components/ProductCard";
 import "./App.css";
+
+const styles = {
+    ListDivider: {
+      borderColor: "slategray",
+    },
+    ListTitle:{
+      margin: "8px 0"
+    },
+};
+
 
 function App() {
   const products = [{
@@ -11,29 +22,32 @@ function App() {
       "3x or 5x Telephoto camera",
       "Up to 29 hours video playback"
     ],
+    stockCount: 10,
     price: 999
 
   },
 
   {
-    title: "iPhone 15",
+    title: "AirPods Pro 2",
     imageSrc: "images/iphone15.png",
     specification: [
       "A16 Bionic chip with 6-core GPU",
       "2x Telephoto camera",
       "Up to 20 hours video playback"
     ],
-    price: 799
+    stockCount: 0,
+    price: 249
   },
   {
-    title: "iPhone 15 Plus",
+    title: "Apple Watch 9",
     imageSrc: "images/iphone15plus.png",
     specification: [
       "A16 Bionic chip with 6-core GPU",
       "2x Telephoto camera",
       "Up to 26 hours video playback"
     ],
-    price: 899
+    stockCount: 6,
+    price: 399
   }
   ];
 
@@ -49,16 +63,20 @@ function App() {
       </ProductList>
 
       <h2> Products which costs upto $500</h2>
-      <ul>
+      
         {products
           .filter(({ price}) => price < 500)
           .map(({ title,price }) => (
-            <li>
-              {title} cost ${price}
-            </li>)
+            <Fragment key={title}>
+              <hr style={styles.ListDivider}/>
+              <p style={styles.ListTitle}>
+                {title} cost ${price}
+              </p>
+            </Fragment>
+            )
           )
         }
-      </ul>
+      
     </div>
   );
 }
