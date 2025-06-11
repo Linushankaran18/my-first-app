@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { ProductList } from "./components/ProductList";
 import { ProductCard } from "./components/ProductCard";
+import { ProductFilter } from "./components/ProductFilter";
 import styles from "./App.module.css";
 
 
@@ -54,8 +55,8 @@ function App() {
           <ProductCard key={product.title} product={product} onPurchase={handlePurchase} />))}
       </ProductList>
 
-      <h2> Products which costs upto $500</h2>
-      
+      <h2> Products filtered by price</h2>
+      <ProductFilter />
         {products
           .filter(({ price}) => price < 500)
           .map(({ title,price }) => (
