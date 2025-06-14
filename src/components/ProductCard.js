@@ -18,11 +18,7 @@ export function ProductCard({product, background = "slategray",onPurchase}){
   return (
     <article className={styles.Container} style={{background}}
     >
-<<<<<<< HEAD
       <button className={styles.Favorite}>🤍 </button>
-=======
-      <button className={styles.favorite}>🤍 </button>
->>>>>>> 9d4dd74bd388b541b437f53f30bef02b46b77d90
       <h2>{product.title}</h2>
       <img
         src={product.imageSrc}
